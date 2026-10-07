@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>X-Piano — Get Lyrics + Piano Chords from a YouTube Link</title>
+<meta name="description" content="Paste a YouTube link and get lyrics with piano chords. Hindi / Hinglish / English. 100% free." />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="logo"><span class="logo-x">X</span><span class="logo-dash"> - </span><span class="logo-white">Piano</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section class="hero">
+    <div class="badge">100% FREE • NO DOWNLOAD • SAFE</div>
+    <h1>Paste YouTube link,<br />get<br /><span class="red">Lyrics + Piano Chords</span>.</h1>
+
+    <form id="link-form" class="linkbox">
+      <input id="yt-url" type="url" inputmode="url" placeholder="https://www.youtube.com/watch?v=..." autocomplete="off" required />
+      <button type="submit" id="go-btn">Get Chords</button>
+    </form>
+    <p id="error" class="error" hidden></p>
+
+    <section id="loading" class="loading" hidden>
+      <div class="spinner"></div>
+      <p id="loading-text">Identifying song…</p>
+    </section>
+  </section>
+
+  <section id="result" class="result" hidden>
+    <div class="result-head">
+      <div>
+        <h2 id="song-title">Song title</h2>
+        <p id="song-meta" class="muted">artist</p>
+      </div>
+      <div class="lang-toggle" role="tablist" aria-label="Language">
+        <button data-lang="original" class="active">Original</button>
+        <button data-lang="hinglish">Hinglish</button>
+        <button data-lang="english">English</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="video-col">
+        <div class="video-frame"><div id="player"></div></div>
+        <div class="controls">
+          <div class="ctrl-group">
+            <span>Key:</span>
+            <button id="tp-down">−</button>
+            <b id="tp-val">0</b>
+            <button id="tp-up">+</button>
+          </div>
+          <label class="ctrl-group"><input type="checkbox" id="autoscroll" /> Auto-scroll</label>
+        </div>
+        <div class="piano-wrap">
+          <p class="muted small">Chord: <b id="current-chord" class="red">C</b> — see the keys below</p>
+          <div id="piano" class="piano"></div>
+        </div>
+        <p id="chord-source" class="muted small"></p>
+      </div>
+
+      <div class="lyrics-col">
+        <div id="lyrics" class="lyrics"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <p>X-Piano • For educational purposes. Lyrics belong to their respective owners. Videos play through YouTube embed — we do not download or store anything.</p>
+  </footer>
+
+</main>
+
+<script src="chords-db.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
